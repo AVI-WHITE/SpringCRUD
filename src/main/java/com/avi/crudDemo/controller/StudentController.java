@@ -42,7 +42,7 @@ public class StudentController {
         if(s1==null){
 
             return ResponseEntity.status(404)
-                    .body(null);
+                    .body(s1);
         }
 
 
@@ -57,8 +57,6 @@ public class StudentController {
     public ResponseEntity<List<Student>> getAllStudent(){
 
         List<Student> s = studentService.getAllStudentsDb();
-
-
 
         return ResponseEntity.status(HttpStatus.OK).body(s);
 
@@ -88,6 +86,14 @@ public class StudentController {
 
         return ResponseEntity.status(200).body(s1);
 
+    }
+
+    @PatchMapping("/delete-soft/{id}")
+    public ResponseEntity<String> softDelete (@PathVariable Long id){
+
+        Boolean isDelete = studentService.softDelete(id);
+
+        return ResponseEntity.ok("Student deleted");
     }
 
 
