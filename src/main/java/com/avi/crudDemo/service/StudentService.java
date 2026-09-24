@@ -47,7 +47,7 @@ public class StudentService {
 
     public  List<Student> getAllStudentsDb(){
 
-        return studentRepository.findAll();
+        return studentRepository.findByDeletedIsFalse();
 
     }
 
